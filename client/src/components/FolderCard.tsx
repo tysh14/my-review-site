@@ -34,7 +34,15 @@ const FolderCard = ({ openFolder }: Props) => {
 
   const deleteThisFolder = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/folders/${id}`, {
+      const response = await fetch(
+        `http://localhost:5000/delsomereviews/${id}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      const response2 = await fetch(`http://localhost:5000/folders/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });

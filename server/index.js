@@ -162,7 +162,23 @@ app.delete("/reviews/:id", async (req, res) => {
       [id]
     );
 
-    res.json("Folder was deleted");
+    res.json("Review was deleted");
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+//delete a folder of reviews
+
+app.delete("/delsomereviews/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteReviews = await pool.query(
+      "DELETE FROM reviews WHERE folder_id = $1",
+      [id]
+    );
+
+    res.json("Reviews were deleted");
   } catch (error) {
     console.error(error.message);
   }
