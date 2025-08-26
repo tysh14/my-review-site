@@ -31,12 +31,12 @@ const ReviewCard = () => {
 
   return (
     <div className="col">
-      <div className="card" style={{ width: "18rem", height: "325px" }}>
+      <div className="card" style={{ width: "20rem", height: "23rem" }}>
         <img
           src={currImgURL}
           className="card-img-top"
           alt="beach"
-          style={{ objectFit: "cover", height: "180px" }}
+          style={{ objectFit: "cover", height: "220px" }}
           onError={handleImgError}
         />
         <div className="card-body">
@@ -46,11 +46,14 @@ const ReviewCard = () => {
               overflow: "hidden",
               whiteSpace: "nowrap",
               textOverflow: "ellipsis",
+              width: "100%",
             }}
           >
             {title}
           </h5>
-          <p className="card-text fs-6">{rating + " ★"}</p>
+          <p style={{ width: "100%" }} className="card-text fs-5">
+            {rating + " ★"}
+          </p>
           <ViewReviewBtn />
         </div>
       </div>

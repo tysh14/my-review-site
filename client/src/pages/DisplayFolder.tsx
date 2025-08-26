@@ -71,6 +71,17 @@ const DisplayFolder = () => {
     localStorage.setItem("currFolderID", `${newFID}`);
   };
 
+  let folderImg = "";
+  let folderTitle = "";
+  let folderDesc = "";
+  for (let i = 0; i < folderList.length; i++) {
+    if (currFolderID === folderList[i].f_id) {
+      folderImg = folderList[i].folder_img_url;
+      folderTitle = folderList[i].folder_name;
+      folderDesc = folderList[i].folder_description;
+    }
+  }
+
   return (
     <>
       <nav>
@@ -78,15 +89,33 @@ const DisplayFolder = () => {
           My Ultimate Review List
         </a>
       </nav>
-      <div className="hero"></div>
+      <div className="hero hero-df">
+        <section className="folder-details">
+          <img
+            src={folderImg}
+            alt="Folder Image"
+            className="folder-image"
+          ></img>
+          <div className="folder-details-text">
+            <h1 className="fw-bold">{folderTitle}</h1>
+            <p className="fs-5">{folderDesc}</p>
+            <p>{`${reviewList.length} reviews`}</p>
+          </div>
+        </section>
+      </div>
       <main>
-        <section>
+        <section className="folder-list">
           <ul>
             <li>
-              <a href="/">All folders</a>
+              <a href="/" className="fs-6">
+                All folders
+              </a>
+            </li>
+            <li>
+              <hr />
             </li>
             {folderList.map((folder) => (
-              <li key={folder.f_id}>
+              <li className="folder-names fs-6" key={folder.f_id}>
                 <a
                   href="/displayfolder"
                   onClick={() => handleChangeFolder(folder.f_id)}
@@ -98,9 +127,9 @@ const DisplayFolder = () => {
           </ul>
         </section>
         <div
-          className="row row-cols-1 row-cols-md-5 g-4"
+          className="row row-cols-1 row-cols-md-4 g-4"
           style={{
-            width: "85%",
+            width: "75%",
           }}
         >
           {reviewList.map((review) => (

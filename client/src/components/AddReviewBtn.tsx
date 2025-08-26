@@ -17,12 +17,7 @@ function AddReviewBtn() {
     <>
       <button
         type="button"
-        className="btn btn-outline-secondary"
-        style={{
-          width: "18rem",
-          height: "325px",
-          fontSize: "80px",
-        }}
+        className="btn fw-lighter add-review"
         onClick={handleShow}
       >
         +

@@ -1,0 +1,21 @@
+/* STYLES FOR BOTH PAGES */
+.hero {
+  background-color: rgb(102, 155, 172);
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 30px rgb(0, 0, 0, 0.5) inset;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 5vh;
+}

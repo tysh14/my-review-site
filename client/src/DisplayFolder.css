@@ -1,0 +1,70 @@
+/* hero/folder details section */
+
+.hero-h {
+  justify-content: center;
+}
+
+.hero-df {
+  justify-content: flex-start;
+}
+
+.folder-image {
+  width: 25vh;
+  height: 25vh;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.folder-details {
+  margin-left: 21%;
+  width: fit-content;
+  display: flex;
+}
+
+.folder-details-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 1vw;
+}
+
+/* folder list section */
+
+ul {
+  list-style-type: none;
+  padding-left: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+li a {
+  color: black;
+  text-decoration: none;
+}
+
+li a:hover {
+  color: rgb(92, 92, 92);
+}
+
+.folder-list {
+  width: 10%;
+  margin: 0;
+  padding: 0;
+}
+
+.folder-names {
+  padding: 2px;
+}
+
+.add-review {
+  width: 20rem;
+  height: 23rem;
+  background-color: rgb(252, 252, 252) !important;
+  border-color: rgb(177, 177, 177) !important;
+  font-size: 80px !important;
+  color: rgb(124, 124, 124) !important;
+}
+
+.add-review:hover {
+  background-color: rgb(175, 175, 175) !important;
+  color: rgb(255, 255, 255) !important;
+}

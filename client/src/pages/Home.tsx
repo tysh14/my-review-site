@@ -58,7 +58,7 @@ function Home() {
           My Ultimate Review List
         </a>
       </nav>
-      <div className="hero">
+      <div className="hero hero-h">
         <h1 className="user-title">tyshka's reviews °❀.ೃ࿔*</h1>
       </div>
       <div
