@@ -4,6 +4,7 @@ import { useState, useEffect, createContext } from "react";
 import AddReviewBtn from "../components/AddReviewBtn";
 import defaultImg from "../assets/Image-not-found.jpg";
 import ReviewCard from "../components/ReviewCard";
+import DisplayFolderDetails from "../components/DisplayFolderDetails";
 
 // context to use when editing a review
 export const ReviewEditContext = createContext({
@@ -71,17 +72,6 @@ const DisplayFolder = () => {
     localStorage.setItem("currFolderID", `${newFID}`);
   };
 
-  let folderImg = "";
-  let folderTitle = "";
-  let folderDesc = "";
-  for (let i = 0; i < folderList.length; i++) {
-    if (currFolderID === folderList[i].f_id) {
-      folderImg = folderList[i].folder_img_url;
-      folderTitle = folderList[i].folder_name;
-      folderDesc = folderList[i].folder_description;
-    }
-  }
-
   return (
     <>
       <nav>
@@ -90,18 +80,7 @@ const DisplayFolder = () => {
         </a>
       </nav>
       <div className="hero hero-df">
-        <section className="folder-details">
-          <img
-            src={folderImg}
-            alt="Folder Image"
-            className="folder-image"
-          ></img>
-          <div className="folder-details-text">
-            <h1 className="fw-bold">{folderTitle}</h1>
-            <p className="fs-5">{folderDesc}</p>
-            <p>{`${reviewList.length} reviews`}</p>
-          </div>
-        </section>
+        <DisplayFolderDetails folderList={folderList} reviewList={reviewList} />
       </div>
       <main>
         <section className="folder-list">

@@ -28,6 +28,21 @@
   padding-left: 1vw;
 }
 
+.settings-btn {
+  width: fit-content;
+  background-color: transparent;
+  border: none;
+  color: rgb(20, 20, 20);
+}
+
+.settings-btn:hover {
+  color: rgb(58, 58, 58) !important;
+}
+
+.folder-title-ctn {
+  display: flex;
+}
+
 /* folder list section */
 
 ul {
