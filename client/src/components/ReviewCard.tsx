@@ -40,7 +40,16 @@ const ReviewCard = () => {
           onError={handleImgError}
         />
         <div className="card-body">
-          <h5 className="card-title">{title}</h5>
+          <h5
+            className="card-title"
+            style={{
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {title}
+          </h5>
           <p className="card-text fs-6">{rating + " ★"}</p>
           <ViewReviewBtn />
         </div>

@@ -55,42 +55,62 @@ const DisplayFolder = () => {
   }, []);
 
   return (
-    <div
-      className="row row-cols-1 row-cols-md-3 g-4"
-      style={{ maxWidth: "1000px", margin: "auto" }}
-    >
-      {reviewList.map((review) => (
-        <ReviewEditContext.Provider
-          key={review.r_id}
-          value={{
-            id: review.r_id,
-            title: review.review_name,
-            rating: Number(review.review_rating),
-            desc: review.review_description,
-            img: `${
-              review.review_img_url ? review.review_img_url : defaultImg
-            }`,
-            folderID: currFolderID,
+    <>
+      <nav>
+        <a className=" navbar-brand fw-bold fs-3" href="#">
+          My Ultimate Review List
+        </a>
+      </nav>
+      <div className="hero"></div>
+      <main>
+        <section>
+          <ul>
+            <li>Hello</li>
+            <li>Hello</li>
+            <li>Hello</li>
+            <li>Hello</li>
+          </ul>
+        </section>
+        <div
+          className="row row-cols-1 row-cols-md-5 g-4"
+          style={{
+            maxWidth: "1550px",
           }}
         >
-          <ReviewCard />
-        </ReviewEditContext.Provider>
-      ))}
-      <div className="col">
-        <ReviewAddContext.Provider
-          value={{
-            id: Number(""),
-            title: "",
-            rating: 5,
-            desc: "",
-            img: "",
-            folderID: currFolderID,
-          }}
-        >
-          <AddReviewBtn />
-        </ReviewAddContext.Provider>
-      </div>
-    </div>
+          {reviewList.map((review) => (
+            <ReviewEditContext.Provider
+              key={review.r_id}
+              value={{
+                id: review.r_id,
+                title: review.review_name,
+                rating: Number(review.review_rating),
+                desc: review.review_description,
+                img: `${
+                  review.review_img_url ? review.review_img_url : defaultImg
+                }`,
+                folderID: currFolderID,
+              }}
+            >
+              <ReviewCard />
+            </ReviewEditContext.Provider>
+          ))}
+          <div className="col">
+            <ReviewAddContext.Provider
+              value={{
+                id: Number(""),
+                title: "",
+                rating: 5,
+                desc: "",
+                img: "",
+                folderID: currFolderID,
+              }}
+            >
+              <AddReviewBtn />
+            </ReviewAddContext.Provider>
+          </div>
+        </div>
+      </main>
+    </>
   );
 };
 

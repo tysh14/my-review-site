@@ -53,7 +53,14 @@ function Home() {
 
   return (
     <>
-      <h1 className="text-center">My Reviews</h1>
+      <nav>
+        <a className=" navbar-brand fw-bold fs-3" href="#">
+          My Ultimate Review List
+        </a>
+      </nav>
+      <div className="hero">
+        <h1 className="user-title">tyshka's reviews °❀.ೃ࿔*</h1>
+      </div>
       <div
         className="row row-cols-1 row-cols-md-2 g-4"
         style={{
