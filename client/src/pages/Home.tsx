@@ -54,7 +54,7 @@ function Home() {
   return (
     <>
       <nav>
-        <a className=" navbar-brand fw-bold fs-3" href="#">
+        <a className=" navbar-brand fw-bold fs-3" href="/">
           My Ultimate Review List
         </a>
       </nav>

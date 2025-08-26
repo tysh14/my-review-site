@@ -27,17 +27,25 @@ export const ReviewAddContext = createContext({
 
 const DisplayFolder = () => {
   const currFolderID = Number(localStorage.getItem("currFolderID"));
-  let myArr: Array<{
+  let newRArr: Array<{
     r_id: number;
     review_name: string;
     review_rating: string;
     review_description: string;
     review_img_url: string;
   }> = [];
-  const [reviewList, setReviewList] = useState(myArr);
+  const [reviewList, setReviewList] = useState(newRArr);
+
+  let newFArr: Array<{
+    f_id: number;
+    folder_name: string;
+    folder_description: string;
+    folder_img_url: string;
+  }> = [];
+  const [folderList, setFolderList] = useState(newFArr);
 
   // gets reviews for the current folder from database
-  const getReviews = async () => {
+  const getData = async () => {
     try {
       const id = currFolderID;
       const response = await fetch(`http://localhost:5000/getreviews/${id}`, {
@@ -45,19 +53,28 @@ const DisplayFolder = () => {
       });
       const jsonData = await response.json();
       setReviewList(jsonData);
+
+      const response2 = await fetch("http://localhost:5000/folders");
+      const jsonData2 = await response2.json();
+
+      setFolderList(jsonData2);
     } catch (error) {
-      console.log("Error fetching image:", error);
+      console.log("Error fetching data:", error);
     }
   };
 
   useEffect(() => {
-    getReviews();
+    getData();
   }, []);
+
+  const handleChangeFolder = (newFID: number) => {
+    localStorage.setItem("currFolderID", `${newFID}`);
+  };
 
   return (
     <>
       <nav>
-        <a className=" navbar-brand fw-bold fs-3" href="#">
+        <a className=" navbar-brand fw-bold fs-3" href="/">
           My Ultimate Review List
         </a>
       </nav>
@@ -65,16 +82,25 @@ const DisplayFolder = () => {
       <main>
         <section>
           <ul>
-            <li>Hello</li>
-            <li>Hello</li>
-            <li>Hello</li>
-            <li>Hello</li>
+            <li>
+              <a href="/">All folders</a>
+            </li>
+            {folderList.map((folder) => (
+              <li key={folder.f_id}>
+                <a
+                  href="/displayfolder"
+                  onClick={() => handleChangeFolder(folder.f_id)}
+                >
+                  {folder.folder_name}
+                </a>
+              </li>
+            ))}
           </ul>
         </section>
         <div
           className="row row-cols-1 row-cols-md-5 g-4"
           style={{
-            maxWidth: "1550px",
+            width: "85%",
           }}
         >
           {reviewList.map((review) => (
