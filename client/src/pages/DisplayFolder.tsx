@@ -26,8 +26,18 @@ export const ReviewAddContext = createContext({
   folderID: Number(""),
 });
 
+// context to use when editing the folder
+export const FolderContext = createContext({
+  id: Number(""),
+  title: "",
+  desc: "",
+  img: "",
+});
+
 const DisplayFolder = () => {
   const currFolderID = Number(localStorage.getItem("currFolderID"));
+
+  // list of reviews
   let newRArr: Array<{
     r_id: number;
     review_name: string;
@@ -37,6 +47,7 @@ const DisplayFolder = () => {
   }> = [];
   const [reviewList, setReviewList] = useState(newRArr);
 
+  // list of all folders
   let newFArr: Array<{
     f_id: number;
     folder_name: string;
@@ -44,6 +55,17 @@ const DisplayFolder = () => {
     folder_img_url: string;
   }> = [];
   const [folderList, setFolderList] = useState(newFArr);
+
+  // value for FolderContext to pass on folder details
+  let fContext = { id: currFolderID, title: "", desc: "", img: "" };
+
+  for (let i = 0; i < folderList.length; i++) {
+    if (currFolderID === folderList[i].f_id) {
+      fContext.img = folderList[i].folder_img_url;
+      fContext.title = folderList[i].folder_name;
+      fContext.desc = folderList[i].folder_description;
+    }
+  }
 
   // gets reviews for the current folder from database
   const getData = async () => {
@@ -80,7 +102,9 @@ const DisplayFolder = () => {
         </a>
       </nav>
       <div className="hero hero-df">
-        <DisplayFolderDetails folderList={folderList} reviewList={reviewList} />
+        <FolderContext.Provider value={fContext}>
+          <DisplayFolderDetails reviewList={reviewList} />
+        </FolderContext.Provider>
       </div>
       <main>
         <section className="folder-list">

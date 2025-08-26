@@ -43,6 +43,12 @@
   display: flex;
 }
 
+.popover-body {
+  padding: 5px !important;
+}
+svg {
+  margin-right: 5px;
+}
 /* folder list section */
 
 ul {

@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 
 // COMPONENTS/ ASSETS
 import defaultImg from "../assets/Image-not-found.jpg";
-import EditFolderBtn from "./EditFolderBtn";
 import { FolderContext } from "../pages/Home";
 
 interface Props {
@@ -32,27 +31,6 @@ const FolderCard = ({ openFolder }: Props) => {
     }
   };
 
-  const deleteThisFolder = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:5000/delsomereviews/${id}`,
-        {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-
-      const response2 = await fetch(`http://localhost:5000/folders/${id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      });
-    } catch (error) {
-      console.error("Error deleting folder:", error);
-    }
-
-    window.location.href = "/";
-  };
-
   return (
     <div className="col">
       <div className="card mb-3" style={{ maxWidth: "540px", height: "176px" }}>
@@ -72,14 +50,6 @@ const FolderCard = ({ openFolder }: Props) => {
                 {title}
               </h5>
               <p className="card-text">{desc}</p>
-              <EditFolderBtn />
-              <button
-                type="button"
-                className="btn btn-light"
-                onClick={deleteThisFolder}
-              >
-                🗑
-              </button>
             </div>
           </div>
         </div>

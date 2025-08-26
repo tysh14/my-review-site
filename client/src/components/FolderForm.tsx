@@ -1,7 +1,7 @@
 import { FormEvent, useContext } from "react";
 
 // components
-import { FolderContext } from "../pages/Home";
+import { FolderContext } from "../pages/DisplayFolder";
 
 interface Props {
   userActionNo: number; // 0 = Add, 1 = Edit
@@ -28,7 +28,6 @@ const FolderForm = ({ closeModal, userActionNo }: Props) => {
       ? addFolder(newFolderTitle, newFolderDesc, newImageURL)
       : editFolder(newFolderTitle, newFolderDesc, newImageURL);
 
-    window.location.href = "/";
     closeModal();
   };
 
@@ -50,6 +49,7 @@ const FolderForm = ({ closeModal, userActionNo }: Props) => {
     } catch (error) {
       console.error("Error adding folder:", error);
     }
+    window.location.href = "/";
   };
 
   // updates folder record in the database
@@ -70,6 +70,7 @@ const FolderForm = ({ closeModal, userActionNo }: Props) => {
     } catch (error) {
       console.error("Error editing folder:", error);
     }
+    window.location.href = "/displayfolder";
   };
 
   return (
